@@ -1,0 +1,15 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: block;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background: url("imgs/bgMain.jpg");
+  background-size: cover;
+  background-repeat: repeat-x;
+  background-attachment: fixed;
+}
