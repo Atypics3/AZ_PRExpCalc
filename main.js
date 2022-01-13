@@ -1,6 +1,6 @@
-const exp_table_phase_one = [];
+const exp_table_phase_one = [1, 2, 3];
 
-const exp_table_phase_two = [];
+const exp_table_phase_two = [1, 2, 3];
 
 function get_total_exp(table, percentage) {
   if (percentage > 0 && percentage <= 100) {
