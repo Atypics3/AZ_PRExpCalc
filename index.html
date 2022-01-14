@@ -45,7 +45,7 @@
             <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
             <button
               type="button"
-              class="btn-close text-reset"
+              class="btn-close btn-close-white text-reset"
               data-bs-dismiss="offcanvas"
               aria-label="Close"
             ></button>
@@ -72,53 +72,44 @@
         <div class="p-4 mb-4 bg-light rounded-3">
           <h1 class="text-decoration-underline text-primary text-center">Total EXP Calculator</h1>
           <div class="container-fluid py-5">  
-            <div class="d-grid gap-2 col-4 mx-auto">
-                <h2 class="text-decoration-underline">Information:</h2>
+            <div class="d-grid gap-2 col-3 mx-auto justify-content-center">
                 <!-- calculation section -->
-                <form class="d-grid gap-3" action="javascript:calculate_experience();">
+                <form action="javascript:calculate_experience();">
+                  <div class="d-grid gap-3">
+    
+                    <h4 class="input-group mb-3">Phase:</h4>
+                    <select id="phase-table">
+                      <option value="phase-one">Phase 1</option>
+                      <option value="phase-two">Phase 2</option>
+                    </select>
 
-                <select id="phase_table">
-                  <option id="phase_one">Phase 1
-                  </option>
-                  <option id="phase2">Phase 2
-                  </option>
-                </select>
-                <h3>Current Percentage</h3>
-                <div class="input-group mb-3">
-                  <input class="form-control" type="number" id="curr-percent" value="1" placeholder="Enter a value here">
-                  <span class="input-group-text">%</span>
-                </div>
+                      <h4 class="input-group mb-3">Current Percentage:</h4>
+                      <input type="text" id="curr-percent" value="1" />
+                   
+                      <h4 class="input-group mb-3">Target Percentage:</h4>
+                      <input type="text" id="tar-percent" value="2" />
+    
+            
+                    <button class="btn btn-primary btn-lg" type="submit">Calculate</button> 
 
-                <h3>Target Percentage</h3>
-                <div class="input-group mb-3">
-                  <input class="form-control" type="number" id="tar-percent" value="100" placeholder="Enter a value here">
-                  <span class="input-group-text">%</span>
-                </div>
+    
+                    <br/><br/>
+                    <div class="text-center d-grid gap-3">
+                    <h2 class="text-decoration-bold text-decoration-underline text-primary">Results:</h2>
+                    <h3>Experience Needed:</h3>
 
-
-                <!-- calculate btn -->
-                <button class="btn btn-primary btn-lg" type="submit">Submit</button>
+                    <div class="text-warning" id="exp-needed"></div>
+       
+                    <h3>Runs needed:</h3>
+                    <div class="text-warning" id="runs-needed"></div>
+                    </div>
+       
+                  </div>
                 </form>
+
             </div>
           </div>
         </div>
-
-        
-         <div class="p-4 mb-4 bg-light rounded-3">
-          <div class="container-fluid py-5">
-            <h2>Results:</h2>
-            <p id="exp-needed">w</p>
-            <p id="b">w</p>
-          </div>
-        </div>
-
-        <div class="p-4 mb-4 bg-light rounded-3">
-          <div class="container-fluid py-5">
-            <h2>Assumptions:</h2>
-            <p>text goes here</p>
-          </div>
-        </div>
-    </div> 
 </main>
         <!-- footer -->
         <footer>
@@ -126,7 +117,7 @@
             <footer class="py-3 my-4">
               <ul class="nav justify-content-center border-bottom pb-3 mb-3">
               </ul>
-              <p class="text-center">© 2021 Company, Inc</p>
+              <p class="text-center">© 2022 <a href="https://github.com/Atypics3/AZ_PRExpCalc">Source</a></p>
             </footer>
             </div>
           </footer>
@@ -137,13 +128,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- <script
-    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"
-  ></script> -->
-
-
     <script src="main.js"></script>
+
   </body>
 </html>
