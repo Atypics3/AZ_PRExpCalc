@@ -1,7 +1,3 @@
-for (let i = 0; i < research_list.ships.length; i++) {
-  console.log(research_list.ships[i].type);
-}
-
 /* get the difference of the target percentage and current percentage */
 function get_percent_diff(current_percentage, target_percentage) {
   let current_per = current_percentage;
@@ -16,8 +12,46 @@ function get_percent_diff(current_percentage, target_percentage) {
   else return target_per - current_per;
 }
 
-/* calculates runs needed based on stage */
-function get_runs_needed() {}
+/* calculates runs needed based on stage 12-1 */
+function get_exp_per_run() {
+  // needs 6 battles in order for boss node to spawn in
+  let total_exp;
+
+  // assuming optimal outcome for the average run
+  const happy_exp_bonus = 1.2;
+  const num_of_ships = document.getElementById("num-of-ships").value;
+
+  /*
+  default values for A rank
+  750 	-->  900
+
+  825 	-->  990
+
+  900   -->  1080
+
+  1096  -->  1315.2
+  */
+  // accounts for getting a S rank for all battles
+  const nodeList = [900, 990, 1080, 1315.2];
+
+  /* optimally, run goes like this:
+  - 3 small fleet enemy nodes
+  - 2 medium fleet enemy nodes 
+  - 1 heavy fleet enemy node
+  - 1 boss node
+   */
+
+  // exp obtained for battling 3 small fleet enemy nodes
+  total_exp = nodeList[0] * 3 * happy_exp_bonus * num_of_ships;
+  // exp obtained for battling 2 medium fleet enemy nodes
+  total_exp += nodeList[1] * 2 * happy_exp_bonus * num_of_ships;
+  // exp obtained for battling 1 heavy fleet enemy node
+  total_exp += nodeList[2] * happy_exp_bonus * num_of_ships;
+  // exp obtained for battling 1 boss fleet enemy node
+  total_exp += nodeList[3] * happy_exp_bonus * num_of_ships;
+
+  return total_exp;
+}
 
 /* main function */
 function calculate_experience() {
@@ -29,11 +63,21 @@ function calculate_experience() {
 
   switch (phase_select) {
     case "":
-    case "phase-one":
+
+    case "phase-one-PR":
       table = exp_table_phase_one;
       break;
-    case "phase-two":
+
+    case "phase-two-PR":
       table = exp_table_phase_two;
+      break;
+
+    case "phase-one-DE":
+      table = exp_table_phase_one_decisive;
+      break;
+
+    case "phase-two-DE":
+      table = exp_table_phase_two_decisive;
       break;
     default:
       // not likely to ever output unless something bad happens
@@ -55,7 +99,8 @@ function calculate_experience() {
   else exp_needed_txt.textContent = exp_diff.toLocaleString();
 
   // runs needed
-  let runs_needed = get_runs_needed();
+  let total_exp_per_run = get_exp_per_run();
+  let runs_needed = (exp_diff / total_exp_per_run).toFixed(1);
   runs_needed_txt.textContent = runs_needed.toLocaleString();
 }
 
