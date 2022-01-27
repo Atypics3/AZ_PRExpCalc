@@ -78,26 +78,85 @@
       <!-- main content -->
       <div class="p-4 mb-4 bg-light rounded-3">
         <div class="container-fluid">
-        <h1 class="text-decoration-underline text-info text-center">Total EXP Calculator</h1>
-        <h2>Description:</h2>
-        <p>Assumptions/Things to Note: </p>
-        <ul>
-          <li>The ships used will always have <b>Good</b> morale or better throughout the entire duration of the run.</li>
-          <li>The battle rank will always be S-rank.</li>
-          <li>The enemy nodes that are battled are as follows:</li>
-          <dl>- 3 small fleet enemy nodes</dl>
-          <dl>- 2 medium fleet enemy nodes</dl>
-          <dl>- 1 heavy fleet enemy node</dl>
-          <dl>- 1 boss node</dl>
-          <li>There are not any exp-boosting ships present in any of the fleets.</li>
-          <li>The Runs Needed section calculates to the nearest tenth place.</li>
-        </ul>
-        <br/>
-        <h2>Sources:</h2>
-        <p>Info obtained from the <a href="https://azurlane.koumakan.jp/wiki/Azur_Lane_Wiki">Azur Lane Wiki</a>.</p>
-        </div>
-      </div>
+          <h1 class="text-decoration-underline text-secondary text-center">Total EXP Calculator</h1>
 
+          <!-- accordion section -->
+          <div class="accordion" id="accordionPanelsStayOpenExample">
+            <!-- description -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                  Description
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                <div class="accordion-body">
+                  <p>The way this calculator works is as follows:</p>
+                  <ul>
+                    <li>Select the current phase and the appropriate type for the ship that you're working on.</li>
+                    <ul>
+                      <li>Phase One means that 1,000,000 EXP needs to be collected to move on.</li>
+                      <li>Phase Two means that 2,000,000 EXP needs to be collected to move on</li>
+                    </ul>
+
+                    <li>Select the amount of ships that are going to accumulate EXP; either Vanguard or Backline.</li>
+                    <li>Enter the current and target percentages of your Priority/Decisive ship</li>
+                    <li>For the <b><i>EXP Mode Select</i></b> section, there are two modes that can be chosen:</li>
+                    <ul>
+                      <li><b>Random Mode:</b></li>
+                        <p>The nodes fought for each run will be randomized six times with the exception of the boss node, which is counted only once.</p>
+                      <li><b>Optimal Mode:</b></li>
+                      <ul>
+                          The enemy nodes that are battled are as follows:
+                          <li>- 3 small fleet enemy nodes</li>
+                          <li>- 2 medium fleet enemy nodes</li>
+                          <li>- 1 heavy fleet enemy node</li>
+                          <li>- 1 boss node</li>
+                      </ul>
+    
+                    </ul>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- assumptions and things to note -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                  Assumptions & Things to Note
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                <div class="accordion-body">
+                    <ul>
+                      <li>The ships used will always have <b>Good</b> morale or better throughout the entire duration of the run. <br/>In most cases, this will almost always be a constant unless in the case of heavy grinding. In which case, the runs needed would be higher.</li>
+                      <li>The battle rank will always be S-rank.</li>
+                      <li>There are not any exp-boosting ships present in any of the fleets.</li>
+                      <li>The Runs Needed section calculates to the nearest tenth place.</li>
+                      </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- sources and etc. -->
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                  Sources & etc.
+                </button>
+              </h2>
+              <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                <div class="accordion-body">
+                  <p>Info obtained from the <a href="https://azurlane.koumakan.jp/wiki/Azur_Lane_Wiki">Azur Lane Wiki</a>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+
+      <!-- calculation area -->
         <div class="p-4 mb-4 bg-light rounded-3">
           <div class="container-fluid">  
             <div class="d-grid gap-2 col-3 mx-auto justify-content-center">
@@ -132,9 +191,14 @@
                       <h4 class="input-group mb-3">Target Percentage:</h4>
                       <input type="text" id="tar-percent" value="2" />
     
-            
-                    <button class="btn btn-primary btn-lg" type="submit">Calculate</button> 
+                      <h4 class="input-group mb-3">EXP Mode Select:</h4>
+                      <!-- exp mode selection -->
+                      <select id="exp-mode-select">
+                        <option value="random-mode">Random</option>
+                        <option value="optimal-mode">Optimal</option>
+                      </select>
 
+                    <button class="btn btn-primary btn-lg" type="submit">Calculate</button> 
     
                     <br/><br/>
                     <div class="text-center d-grid gap-3">

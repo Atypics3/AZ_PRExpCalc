@@ -12,10 +12,12 @@ function get_percent_diff(current_percentage, target_percentage) {
   else return target_per - current_per;
 }
 
-/* calculates runs needed based on stage 12-1 */
+/* calculates runs needed based on stage 12-1,
+  may overhaul at one point or another */
 function get_exp_per_run() {
   // needs 6 battles in order for boss node to spawn in
-  let total_exp;
+  let node_requirement = 6,
+    total_exp = 0;
 
   // assuming optimal outcome for the average run
   const happy_exp_bonus = 1.2;
@@ -31,24 +33,35 @@ function get_exp_per_run() {
 
   1096  -->  1315.2
   */
+
   // accounts for getting a S rank for all battles
-  const nodeList = [900, 990, 1080, 1315.2];
+  const nodeList = [900, 990, 1080];
+  const BF_exp = 1315.2;
+  const exp_mode_selection = document.getElementById("exp-mode-select").value;
 
-  /* optimally, run goes like this:
-  - 3 small fleet enemy nodes
-  - 2 medium fleet enemy nodes 
-  - 1 heavy fleet enemy node
-  - 1 boss node
-   */
+  switch (exp_mode_selection) {
+    case "random-mode":
+      // randomized method, good enough in terms of how nodes behave on the map (set by default)
+      for (let i = 0; i < node_requirement; i++) {
+        let randomNode = Math.floor(Math.random() * 3);
+        total_exp += nodeList[randomNode] * happy_exp_bonus * num_of_ships;
+      }
+      break;
 
-  // exp obtained for battling 3 small fleet enemy nodes
-  total_exp = nodeList[0] * 3 * happy_exp_bonus * num_of_ships;
-  // exp obtained for battling 2 medium fleet enemy nodes
-  total_exp += nodeList[1] * 2 * happy_exp_bonus * num_of_ships;
-  // exp obtained for battling 1 heavy fleet enemy node
-  total_exp += nodeList[2] * happy_exp_bonus * num_of_ships;
+    case "optimal-mode":
+      // exp obtained for battling 3 small fleet enemy nodes
+      total_exp = nodeList[0] * 3 * happy_exp_bonus * num_of_ships;
+
+      // exp obtained for battling 2 medium fleet enemy nodes
+      total_exp += nodeList[1] * 2 * happy_exp_bonus * num_of_ships;
+
+      // exp obtained for battling 1 heavy fleet enemy node
+      total_exp += nodeList[2] * happy_exp_bonus * num_of_ships;
+      break;
+  }
+
   // exp obtained for battling 1 boss fleet enemy node
-  total_exp += nodeList[3] * happy_exp_bonus * num_of_ships;
+  total_exp += BF_exp * happy_exp_bonus * num_of_ships;
 
   return total_exp;
 }
@@ -84,10 +97,10 @@ function calculate_experience() {
       exp_needed_txt.textContent = "The selected phase doesn't exist!";
       return;
   }
-
+  // percent_diff gets the percent difference of the current percentage and the target percentage
   const percent_diff = get_percent_diff(current_percentage, target_percentage);
 
-  // exp diff = ((total) x (p% / 100))
+  // formula: exp diff = ((total) x (p% / 100))
   let exp_diff = table * (percent_diff / 100);
 
   if (percent_diff === null)
@@ -100,6 +113,7 @@ function calculate_experience() {
 
   // runs needed
   let total_exp_per_run = get_exp_per_run();
+  // approximate to at most, one decimal place
   let runs_needed = (exp_diff / total_exp_per_run).toFixed(1);
   runs_needed_txt.textContent = runs_needed.toLocaleString();
 }
