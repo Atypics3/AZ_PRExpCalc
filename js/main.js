@@ -24,7 +24,7 @@ function get_exp_per_run() {
   const num_of_ships = document.getElementById("num-of-ships").value;
 
   /*
-  default values for A rank
+  default values for A rank (provided that happy_exp_bonus is applied as well)
   750 	-->  900
 
   825 	-->  990
@@ -115,6 +115,11 @@ function calculate_experience() {
   let total_exp_per_run = get_exp_per_run();
   // approximate to at most, one decimal place
   let runs_needed = (exp_diff / total_exp_per_run).toFixed(1);
+
+  // if high efficiency plan is checked or not
+  const high_eff_plan_check = document.querySelector("#high-eff-plan");
+  if (high_eff_plan_check.checked === true) runs_needed /= 2;
+
   runs_needed_txt.textContent = runs_needed.toLocaleString();
 }
 
