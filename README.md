@@ -12,4 +12,4 @@ It will then calculate the amount of runs needed in order to reach that particul
 
 WIP
 
-Heavily inspired by [thebombzen's EXP Calculator.](https://thebombzen.moe/azur-lane/experience/).
+Heavily inspired by [thebombzen's EXP Calculator](https://thebombzen.moe/azur-lane/experience/).
