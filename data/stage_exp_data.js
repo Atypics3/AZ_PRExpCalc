@@ -20,5 +20,8 @@
 // SF (small fleet), MF (medium fleet), HF (heavy fleet), BF (boss fleet)
 const world_data = {
 	eleven_one: [718, 790, 862, 1051],
+	eleven_four: [737, 811, 885, 1078],
 	twelve_one: [750, 825, 900, 1096],
+	twelve_four: [768, 845, 922, 1123],
+	thirteen_four: [798, 878, 957, 1168],
 };

@@ -94,27 +94,21 @@
                   <ul>
                     <li>Select the current phase and the appropriate type for the ship that you're working on.</li>
                     <ul>
-                      <li>Phase One means that 1,000,000 or 1,400,000 EXP needs to be collected in order to move on.</li>
-                      <li>Phase Two means that 2,000,000 or 2,400,000 EXP needs to be collected in order to move on.</li>
+                      <li>Phase One means that 1,000,000 or 1,400,000 EXP (for priority ships) needs to be collected in order to move on.</li>
+                      <li>Phase Two means that 2,000,000 or 2,400,000 EXP (for decisive ships) needs to be collected in order to move on.</li>
                     </ul>
 
                     <li>Select the amount of ships that are going to accumulate EXP; either Vanguard or Backline.</li>
                     <li>Enter the current and target percentages of your Priority/Decisive ship.</li>
-                    <li>For the <b><i>EXP Mode Select</i></b> section, there are two modes that can be chosen:</li>
+                    <li><b> The enemy nodes that are battled are as follows:</b></li>
                     <ul>
-                      <li><b>Random Mode:</b></li>
-                        <p>The nodes fought for each run will be randomized six times with the exception of the boss node, which is only counted once.</p>
-                        <p>For more information for nodes, <a href="https://azurlane.koumakan.jp/wiki/Experience#Stage_Experience">click here</a>.</p>
-
-                      <li><b>Optimal Mode:</b></li>
                       <ul>
-                          The enemy nodes that are battled are as follows:
                           <li> 3 small fleet enemy nodes</li>
                           <li> 2 medium fleet enemy nodes</li>
                           <li> 1 heavy fleet enemy node</li>
                           <li> 1 boss node</li>
                       </ul>
-    
+                        <p>For more information for nodes, <a href="https://azurlane.koumakan.jp/wiki/Experience#Stage_Experience">click here</a>.</p>
                     </ul>
                   </ul>
                 </div>
@@ -178,7 +172,10 @@
                     <h4 class="input-group mb-3">World Select:</h4>
                     <select id="world_table">
                       <option value="eleven_one">11-1</option>
+                      <option value="eleven_four">11-4</option>
                       <option value="twelve_one">12-1</option>
+                      <option value="twelve_four">12-4</option>
+                      <option value="thirteen_four">13-4</option>
                     </select>
 
                     <h4 class="input-group mb-3">Amount of Ships:</h4>
@@ -189,17 +186,11 @@
                     </select>
 
                       <h4 class="input-group mb-3">Current Percentage:</h4>
-                      <input type="text" id="curr_percent" value="1" />
+                      <input type="number" id="curr_percent" value="0" />
                    
                       <h4 class="input-group mb-3">Target Percentage:</h4>
-                      <input type="text" id="tar_percent" value="2" />
-    
-                      <h4 class="input-group mb-3">EXP Mode Select:</h4>
-                      <!-- exp mode selection -->
-                      <select id="exp_mode_select">
-                        <option value="random_mode">Random</option>
-                        <option value="optimal_mode">Optimal</option>
-                      </select>
+                      <input type="number" id="tar_percent" value="1" />
+
 
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="high_eff_plan">

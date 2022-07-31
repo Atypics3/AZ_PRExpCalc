@@ -7,7 +7,8 @@ function get_percent_diff(current_percentage, target_percentage) {
 	if (current_per === null || target_per === null) return null;
 
 	// if out of range, return a empty string
-	if (current_per < 0 || target_per > 100) return overlimit_txt;
+	if (current_per > target_per || current_per > 100 || target_per < 0)
+		return overlimit_txt;
 	// otherwise, return the percent difference
 	else return target_per - current_per;
 }
@@ -16,8 +17,7 @@ function get_percent_diff(current_percentage, target_percentage) {
   may overhaul at one point or another **/
 function get_exp_per_run() {
 	// needs 6 battles in order for boss node to spawn in
-	let node_requirement = 6,
-		total_exp = 0,
+	let total_exp = 0,
 		nodeList = [];
 
 	// bonuses for each stage clear
@@ -34,48 +34,40 @@ function get_exp_per_run() {
 			nodeList = Array.from(world_data.eleven_one);
 			break;
 
+		case "eleven_four":
+			nodeList = Array.from(world_data.eleven_four);
+			break;
+
 		case "twelve_one":
 			nodeList = Array.from(world_data.twelve_one);
 			break;
-	}
 
-	const exp_mode_selection = document.getElementById("exp_mode_select").value;
-	switch (exp_mode_selection) {
-		case "random_mode":
-			// randomized method, good enough in terms of how nodes behave on the map (set by default)
-			for (let i = 0; i < node_requirement; ++i) {
-				let randomNode = Math.floor(Math.random() * 3);
-				// total exp includes number of ships + MVP + S rank bonus for each ship
-				let MVP = nodeList[randomNode] * 2;
-				total_exp +=
-					nodeList[randomNode] * (num_of_ships - 1) + MVP * s_rank_bonus;
-			}
-
-			// exp obtained for battling 1 boss fleet enemy node
-			total_exp +=
-				nodeList[3] * (num_of_ships - 1) +
-				nodeList[3] * mvp_bonus * s_rank_bonus;
+		case "twelve_four":
+			nodeList = Array.from(world_data.twelve_four);
 			break;
 
-		case "optimal_mode":
-			// exp obtained for battling 3 small fleet enemy nodes
-			total_exp += nodeList[0] * 3 * (num_of_ships - 1) * s_rank_bonus; // for normal exp
-			total_exp += nodeList[0] * mvp_bonus * s_rank_bonus; // for mvp exp
-
-			// exp obtained for battling 2 medium fleet enemy nodes
-			total_exp += nodeList[1] * 2 * (num_of_ships - 1) * s_rank_bonus;
-			total_exp += nodeList[1] * mvp_bonus * s_rank_bonus;
-
-			// exp obtained for battling 1 heavy fleet enemy node
-			total_exp += nodeList[2] * (num_of_ships - 1) * s_rank_bonus;
-			total_exp += nodeList[2] * mvp_bonus * s_rank_bonus;
-
-			// exp obtained for battling 1 boss fleet enemy node
-			total_exp += nodeList[3] * (num_of_ships - 1) * s_rank_bonus;
-			total_exp += nodeList[3] * mvp_bonus * s_rank_bonus;
+		case "thirteen_four":
+			nodeList = Array.from(world_data.thirteen_four);
 			break;
 	}
-	console.log(total_exp);
+
+	// optimal mode:
+	// exp obtained for battling 3 small fleet enemy nodes
+	total_exp += nodeList[0] * 3 * (num_of_ships - 1) * s_rank_bonus; // for normal exp
+	total_exp += nodeList[0] * mvp_bonus * s_rank_bonus; // for mvp exp
+
+	// exp obtained for battling 2 medium fleet enemy nodes
+	total_exp += nodeList[1] * 2 * (num_of_ships - 1) * s_rank_bonus;
+	total_exp += nodeList[1] * mvp_bonus * s_rank_bonus;
+
+	// exp obtained for battling 1 heavy fleet enemy node
+	total_exp += nodeList[2] * (num_of_ships - 1) * s_rank_bonus;
+	total_exp += nodeList[2] * mvp_bonus * s_rank_bonus;
+
+	// exp obtained for battling 1 boss fleet enemy node
+	total_exp += nodeList[3] * (num_of_ships - 1) * s_rank_bonus;
+	total_exp += nodeList[3] * mvp_bonus * s_rank_bonus;
+
 	return total_exp;
 }
 
@@ -92,19 +84,19 @@ function calculate_experience() {
 
 	switch (phase_select) {
 		case "phase_one_PR":
-			table = exp_table_phase_one;
+			table = exp_table_phase_one_PR;
 			break;
 
 		case "phase_two_PR":
-			table = exp_table_phase_two;
+			table = exp_table_phase_two_PR;
 			break;
 
 		case "phase_one_DE":
-			table = exp_table_phase_one_decisive;
+			table = exp_table_phase_one_DE;
 			break;
 
 		case "phase_two_DE":
-			table = exp_table_phase_two_decisive;
+			table = exp_table_phase_two_De;
 			break;
 		default:
 			// not likely to ever output unless something bad happens
