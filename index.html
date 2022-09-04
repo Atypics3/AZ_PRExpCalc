@@ -29,7 +29,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Azur Lane PR Ship EXP Calculator</a>
+        <a class="navbar-brand" href="">Azur Lane PR Ship EXP Calculator</a>
 
         <button
           class="navbar-toggler"
@@ -108,7 +108,7 @@
                           <li> 1 heavy fleet enemy node</li>
                           <li> 1 boss node</li>
                       </ul>
-                        <p>For more information for nodes, <a href="https://azurlane.koumakan.jp/wiki/Experience#Stage_Experience">click here</a>.</p>
+                        <p>For more information for nodes, click <a href="https://azurlane.koumakan.jp/wiki/Experience#Stage_Experience">here</a>.</p>
                     </ul>
                   </ul>
                 </div>
@@ -125,11 +125,13 @@
               <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                 <div class="accordion-body">
                     <ul>
-                      <li>The ships used will always have <b>Good</b> morale (or better) throughout the entire duration of the run. <br/>In most cases, this will almost always be a constant unless in the case of heavy grinding. In which case, the runs needed would be higher.</li>
+                      <li>The ships used will always have <b>Good</b> morale (or better) throughout the entire duration of the run. <br/>In most cases, this will almost always be a constant unless in the case of heavy grinding. 
+                        By default however, the ships' morales will be set to Happy (base 1.0x exp).</li>
                       <li>The battle rank will always be S-rank.</li>
                       <li>In every run, there will be a MVP in the fleet which is included in the total experience gained per run.</li>
                       <li>There are not any exp-boosting ships present in any of the fleets.</li>
                       <li>The Runs Needed section calculates to the nearest tenth place.</li>
+                      <li>For further information about experience, click <a href="https://azurlane.koumakan.jp/wiki/Experience">here</a>.</li>
                       </ul>
                 </div>
               </div>
@@ -159,6 +161,13 @@
                 <!-- calculation section -->
                 <form action="javascript:calculate_experience();">
                   <div class="d-grid gap-3">
+
+                    <!-- fleet type -->
+                    <h4 class="input-group mb-3">Fleet Type:</h4>
+                    <select id="fleet_type">
+                      <option value="frontline">Frontline</option>
+                      <option value="backline">Backline</option>
+                    </select>
 
                     <!-- phase section -->
                     <h4 class="input-group mb-3">Phase:</h4>
@@ -196,6 +205,13 @@
                         <input class="form-check-input" type="checkbox" id="high_eff_plan">
                         <label class="form-check-label" for="high_eff_plan">
                           High Efficiency Combat Logistics Plan?
+                        </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="very_happy_bonus">
+                        <label class="form-check-label" for="very_happy_bonus">
+                          Very Happy Bonus?
                         </label>
                       </div>
 
