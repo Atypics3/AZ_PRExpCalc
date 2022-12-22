@@ -126,7 +126,7 @@ function calculate_experience() {
 			break;
 
 		case "phase_two_DE":
-			table = exp_table_phase_two_De;
+			table = exp_table_phase_two_DE;
 			break;
 		default:
 			// not likely to ever output unless something is tampered with
