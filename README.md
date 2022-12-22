@@ -10,6 +10,6 @@ It will then calculate the amount of runs needed in order to reach that particul
 
 ## Features
 
-- Calculation of EXP requirements from PR1 to PR5
+- Calculation of EXP requirements from PR1 to PR5 (PR6 coming soon)
 
-Heavily inspired by [thebombzen's EXP Calculator](https://thebombzen.moe/azur-lane/experience/).
+Inspired by [thebombzen's EXP Calculator](https://thebombzen.moe/azur-lane/experience/).
