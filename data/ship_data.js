@@ -12,14 +12,16 @@ let overlimit_txt = "";
 // PR = Priority
 // DE = Decisive
 //
-// Factions:
+// Factions (alphabetical list):
+// DGE = Dragon Empery
+// EU = Eagle Union
+// IL = Iris Libre
+// IB = Iron Blood
+// NP = Northern Parliament
 // RN = Royal Navy
 // SE = Sakura Empire
-// IB = Iron Blood
-// IL = Iris Libre
-// EU = Eagle Union
-// VD = Vichya Dominion
 // SDE = Sardegna Empire
+// VD = Vichya Dominion
 
 const research_list = {
 	series_one: [
@@ -159,6 +161,70 @@ const research_list = {
 			name: "Marco Polo",
 			type: "PR",
 			faction: "SDE",
+		},
+	],
+
+	series_five: [
+		{
+			name: "Plymouth",
+			type: "DE",
+			faction: "RN",
+		},
+
+		{
+			name: "Prinz Rupprecht",
+			type: "PR",
+			faction: "IB",
+		},
+
+		{
+			name: "Harbin",
+			type: "DE",
+			faction: "DGE",
+		},
+
+		{
+			name: "Chkalov",
+			type: "DE",
+			faction: "NP",
+		},
+
+		{
+			name: "Brest",
+			type: "PR",
+			faction: "RN",
+		},
+	],
+
+	series_six: [
+		{
+			name: "Kearsarge",
+			type: "PR",
+			faction: "EU",
+		},
+
+		{
+			name: "Shimanto",
+			type: "DE",
+			faction: "SE",
+		},
+
+		{
+			name: "Felix Schultz",
+			type: "DE",
+			faction: "IB",
+		},
+
+		{
+			name: "Hindenburg",
+			type: "PR",
+			faction: "IB",
+		},
+
+		{
+			name: "Flandre",
+			type: "DE",
+			faction: "VD",
 		},
 	],
 };

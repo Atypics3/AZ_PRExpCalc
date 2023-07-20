@@ -17,7 +17,7 @@
 
 // FORMAT:
 // -------
-// SF (small fleet), MF (medium fleet), HF (heavy fleet), BF (boss fleet)
+// SF (small fleet), MF (medium fleet), LF (large fleet), BF (boss fleet)
 const world_data = {
 	eleven_one: [718, 790, 862, 1051],
 	eleven_four: [737, 811, 885, 1078],

@@ -7,98 +7,11 @@ function get_percent_diff(current_percentage, target_percentage) {
 	if (current_per === null || target_per === null) return null;
 
 	// if out of range, return a empty string
-	if (current_per > target_per || current_per > 100 || target_per < 0)
+	if (current_per > target_per || current_per > 100 || target_per < 0 || target_per > 100)
 		return overlimit_txt;
+		
 	// otherwise, return the percent difference
 	else return target_per - current_per;
-}
-
-/** calculates the EXP obtained per run,
-  may overhaul at one point or another **/
-function get_exp_per_run() {
-	// needs 6 battles in order for boss node to spawn in
-	let total_exp = 0,
-		nodeList = [];
-
-	// bonuses for each stage clear
-	const flagship_bonus = 1.5; // only applies to main fleet
-	const mvp_bonus = 2;
-	const very_happy_bonus = 1.2;
-	const s_rank_bonus = 1.2;
-
-	let num_of_ships = document.getElementById("num_of_ships").value;
-	const very_happy_bonus_check = document.querySelector("#very_happy_bonus");
-
-	// getting node EXP array for chosen stage
-	// goes from small fleet, medium fleet, heavy fleet, boss fleet
-	const world_table_selection = document.getElementById("world_table").value;
-	switch (world_table_selection) {
-		case "eleven_one":
-			nodeList = Array.from(world_data.eleven_one);
-			break;
-
-		case "eleven_four":
-			nodeList = Array.from(world_data.eleven_four);
-			break;
-
-		case "twelve_one":
-			nodeList = Array.from(world_data.twelve_one);
-			break;
-
-		case "twelve_four":
-			nodeList = Array.from(world_data.twelve_four);
-			break;
-
-		case "thirteen_four":
-			nodeList = Array.from(world_data.thirteen_four);
-			break;
-	}
-
-	// optimal mode:
-	// exp obtained for battling:
-	// - 3 SF nodes
-	// - 2 MF nodes
-	// - 1 HF node
-
-	// determines conditions in which exp is rewarded
-	const fleet_type = document.getElementById("fleet_type").value;
-
-	if (num_of_ships > 1) nums_of_ships = num_of_ships - 1;
-	let pos = 0,
-		times_run = 3;
-
-	if (fleet_type === "frontline") {
-		for (let i = 0; i < 3; i++) {
-			total_exp += nodeList[pos] * times_run * num_of_ships * s_rank_bonus;
-			pos++, times_run--;
-		}
-
-		// exp obtained for battling 1 boss fleet enemy node
-		total_exp += nodeList[3] * num_of_ships * s_rank_bonus;
-		total_exp += nodeList[3] * mvp_bonus * s_rank_bonus;
-
-		// exp obtained if ships' morale is very happy (1.2x exp)
-		if (very_happy_bonus_check.checked === true) {
-			total_exp *= very_happy_bonus;
-		}
-	} else if (fleet_type === "backline") {
-		for (let i = 0; i < 3; i++) {
-			total_exp += nodeList[pos] * times_run * num_of_ships * s_rank_bonus;
-			total_exp += nodeList[pos] * s_rank_bonus * flagship_bonus; // flagship bonus
-			pos++, times_run--;
-		}
-
-		// exp obtained for battling 1 boss fleet enemy node
-		total_exp += nodeList[3] * num_of_ships * s_rank_bonus;
-		total_exp += nodeList[3] * mvp_bonus * s_rank_bonus * flagship_bonus;
-
-		// exp obtained if ships' morale is very happy (1.2x exp)
-		if (very_happy_bonus_check.checked === true) {
-			total_exp *= very_happy_bonus;
-		}
-	}
-
-	return total_exp;
 }
 
 /* main function */

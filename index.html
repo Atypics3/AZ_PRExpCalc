@@ -15,9 +15,15 @@
 
     <link href="./css/main.css" rel="stylesheet"/>
 
+    <!-- JS -->
+
     <script src="./data/ship_data.js"></script>
 
     <script src="./data/stage_exp_data.js"></script>
+
+    <script src="./js/get_exp_per_run.js"></script>
+
+    <script src="./js/random_pick.js"></script>
 
     <script src="./js/main.js" defer></script>
 
@@ -131,6 +137,7 @@
                       <li>In every run, there will be a MVP in the fleet which is included in the total experience gained per run.</li>
                       <li>There are not any exp-boosting ships present in any of the fleets.</li>
                       <li>The Runs Needed section calculates to the nearest tenth place.</li>
+                      <li>When Very Happy Bonus is selected, all ships in the vanguard/backline (a maximum of 3) are expected to have the very happy status and calculations done assume that all of them have it.</li>
                       <li>For further information about experience, click <a href="https://azurlane.koumakan.jp/wiki/Experience">here</a>.</li>
                       </ul>
                 </div>
@@ -198,7 +205,7 @@
                       <input type="number" id="curr_percent" value="0" />
                    
                       <h4 class="input-group mb-3">Target Percentage:</h4>
-                      <input type="number" id="tar_percent" value="1" />
+                      <input type="number" id="tar_percent" value="100" />
 
 
                       <div class="form-check">
