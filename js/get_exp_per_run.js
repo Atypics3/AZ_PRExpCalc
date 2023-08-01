@@ -16,23 +16,23 @@
 	const world_table_selection = document.getElementById("world_table").value;
 	switch (world_table_selection) {
 		case "eleven_one":
-			node_list = Array.from(world_data.eleven_one);
+			node_list = Array.from(world_data.eleven_one.stage_exp);
 			break;
 
 		case "eleven_four":
-			node_list = Array.from(world_data.eleven_four);
+			node_list = Array.from(world_data.eleven_four.stage_exp);
 			break;
 
 		case "twelve_one":
-			node_list = Array.from(world_data.twelve_one);
+			node_list = Array.from(world_data.twelve_one.stage_exp);
 			break;
 
 		case "twelve_four":
-			node_list = Array.from(world_data.twelve_four);
+			node_list = Array.from(world_data.twelve_four.stage_exp);
 			break;
 
 		case "thirteen_four":
-			node_list = Array.from(world_data.thirteen_four);
+			node_list = Array.from(world_data.thirteen_four.stage_exp);
 			break;
 	}
 
@@ -80,5 +80,6 @@
 
     // adding up the total amount of exp earned at the end of the run (7 battles total)
     total_exp += mvp_exp;
+
 	return total_exp;
 }

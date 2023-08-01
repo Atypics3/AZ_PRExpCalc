@@ -6,8 +6,8 @@ function get_percent_diff(current_percentage, target_percentage) {
 	// if one of the inputs or both are empty, return null
 	if (current_per === null || target_per === null) return null;
 
-	// if out of range, return a empty string
-	if (current_per > target_per || current_per > 100 || target_per < 0 || target_per > 100)
+	// else if out of range, return a empty string
+	else if (current_per > 100 || (target_per - current_per) < 0 || target_per < 0 || current_per < 0 ||  target_per > 100)
 		return overlimit_txt;
 		
 	// otherwise, return the percent difference
@@ -24,6 +24,7 @@ function calculate_experience() {
 		"total_exp_collected"
 	);
 	const runs_needed_txt = document.getElementById("runs_needed");
+	const total_oil_spent_txt = document.getElementById("total_oil_cost")
 
 	switch (phase_select) {
 		case "phase_one_PR":
@@ -63,6 +64,10 @@ function calculate_experience() {
 
 	// runs needed
 	let total_exp_per_run = get_exp_per_run();
+
+	// oil needed
+	let total_oil_per_run = get_oil_per_run();
+
 	// approximate to at most, one decimal place
 	let runs_needed = (exp_diff / total_exp_per_run).toFixed(1);
 
@@ -76,6 +81,12 @@ function calculate_experience() {
 	if (high_eff_plan_check.checked === true) total_exp_per_run *= 2;
 
 	total_exp_collected_txt.textContent = total_exp_per_run.toLocaleString();
+
+
+	// total oil spent per run
+	let oil_cost = get_oil_per_run();
+	total_oil_per_run = oil_cost * runs_needed;
+	total_oil_spent_txt.textContent = total_oil_per_run.toLocaleString();
 }
 
 /* when button is clicked, calls calculate_experience() */

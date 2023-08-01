@@ -10,6 +10,8 @@ It will then calculate the amount of runs needed in order to reach that particul
 
 ## Features
 
-- Calculation of EXP requirements from PR1 to PR5 (PR6 coming soon)
+- Calculation of EXP requirements for Priority and Decisive ships respectively
+
+- Oil cost/run (coming soon)
 
 Inspired by [thebombzen's EXP Calculator](https://thebombzen.moe/azur-lane/experience/).
